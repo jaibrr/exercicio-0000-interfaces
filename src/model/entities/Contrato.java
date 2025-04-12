@@ -2,18 +2,24 @@ package model.entities;
 
 import java.sql.Date;
 
-public class Contract {
+public class Contrato {
 
-    Integer number;
+    Integer numero;
     Date dataContrato;
     Double valorTotalContrato;
+    Integer numeroParcelas;
 
-    
-    public Integer getNumber() {
-        return number;
+    public Contrato(Integer numero, Date dataContrato, Double valorTotalContrato, Integer numeroParcelas) {
+        this.numero = numero;
+        this.dataContrato = dataContrato;
+        this.valorTotalContrato = valorTotalContrato;
+        this.numeroParcelas = numeroParcelas;
     }
-    public void setNumber(Integer number) {
-        this.number = number;
+    public Integer getNumber() {
+        return numero;
+    }
+    public void setNumber(Integer numero) {
+        this.numero = numero;
     }
     public Date getDataContrato() {
         return dataContrato;
