@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 import model.entities.Contrato;
 import model.entities.Parcela;
-import model.services.ServicoPagamento;
+
+import model.services.ServicoPagamentoInterface;
+import model.services.SerivcoPagamentoInterfacePaypal;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -27,14 +29,11 @@ public class App {
         System.out.print("Numero de Parcelas: ");
         Integer numeroParcelas = sc.nextInt();
         
-        Contrato loc = new Contrato();
+        Contrato contrato = new Contrato(numeroContrato,dataContrato,valorTotalContrato, new Parcela(dataContrato,valorTotalContrato/numeroParcelas) );
 
-        System.out.print("Insira o preço por hora: $ ");
-        double precoHora = sc.nextDouble();
-        System.out.print("Insira o preço por dia: $ ");
-        double precoDia = sc.nextDouble();
-        ServicoLocacao servicoLocacao = new ServicoLocacao(precoHora, precoDia, new ServicoTributoBrasil());
-        servicoLocacao.processarFatura(loc);
+
+        ServicoPagamentoInterface servicoPagamento = new SerivcoPagamentoInterfacePaypal() {};
+        servicoPagamento.processarFatura(contrato);
         
     }
 }
