@@ -11,6 +11,8 @@ import model.entities.Parcela;
 import model.services.ServicoPagamentoInterface;
 import model.services.SerivcoPagamentoInterfacePaypal;
 
+//tô muito emocionada agora porque recebi um email do Banco do Brasil me informando que vou começar o processo de contratação amanhã!
+
 public class App {
     public static void main(String[] args) throws Exception {
 
