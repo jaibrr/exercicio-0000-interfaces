@@ -1,6 +1,6 @@
 package model.services;
 
-public class SerivcoPagamentoInterfacePaypal implements ServicoPagamentoInterface{
+public class ServicoPagamentoInterfacePaypal implements ServicoPagamentoInterface{
 
     @Override
     public double juroMensal(double valor){
@@ -11,4 +11,5 @@ public class SerivcoPagamentoInterfacePaypal implements ServicoPagamentoInterfac
     public double taxaPagamento(double valor){
         return valor * 0.02;
     }
+
 }

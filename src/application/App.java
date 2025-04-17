@@ -9,9 +9,8 @@ import model.entities.Contrato;
 import model.entities.Parcela;
 
 import model.services.ServicoPagamentoInterface;
-import model.services.SerivcoPagamentoInterfacePaypal;
-
-//tô muito emocionada agora porque recebi um email do Banco do Brasil me informando que vou começar o processo de contratação amanhã!
+import model.services.ServicoPagamentoInterfacePaypal;
+import model.services.ServicoPagamento;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -31,11 +30,11 @@ public class App {
         System.out.print("Numero de Parcelas: ");
         Integer numeroParcelas = sc.nextInt();
         
-        Contrato contrato = new Contrato(numeroContrato,dataContrato,valorTotalContrato, new Parcela(dataContrato,valorTotalContrato/numeroParcelas) );
+        Contrato contrato = new Contrato(numeroContrato,dataContrato,valorTotalContrato);
 
 
-        ServicoPagamentoInterface servicoPagamento = new SerivcoPagamentoInterfacePaypal() {};
-        servicoPagamento.processarFatura(contrato);
+        ServicoPagamento servicoPagamento = new ServicoPagamento(numeroParcelas, contrato, new ServicoPagamentoInterfacePaypal()) {};
+        servicoPagamento.processarPagamento();
         
     }
 }

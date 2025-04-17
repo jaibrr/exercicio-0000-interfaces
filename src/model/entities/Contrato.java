@@ -7,13 +7,12 @@ public class Contrato {
     private Integer numeroContrato;
     private LocalDateTime dataContrato;
     private Double valorTotalContrato;
-    private Parcela parcelas;
 
-    public Contrato(Integer numeroContrato, LocalDateTime dataContrato, Double valorTotalContrato, Parcela parcelas) {
+    public Contrato(Integer numeroContrato, LocalDateTime dataContrato, Double valorTotalContrato) {
         this.numeroContrato = numeroContrato;
         this.dataContrato = dataContrato;
         this.valorTotalContrato = valorTotalContrato;
-        this.parcelas = parcelas;
+
     }
     public Integer getNumero() {
         return numeroContrato;
@@ -32,15 +31,7 @@ public class Contrato {
     }
     public void setValorTotalContrato(Double valorTotalContrato) {
         this.valorTotalContrato = valorTotalContrato;
-    }
-    public Parcela getParcelas() {
-        return parcelas;
-    }
-    public void setParcelas(Parcela parcelas) {
-        this.parcelas = parcelas;
-    }
-
-    
+    }    
 
 
 }
