@@ -1,14 +1,15 @@
 package model.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Contrato {
 
     private Integer numeroContrato;
-    private LocalDateTime dataContrato;
+    private LocalDate dataContrato;
     private Double valorTotalContrato;
 
-    public Contrato(Integer numeroContrato, LocalDateTime dataContrato, Double valorTotalContrato) {
+
+    public Contrato(Integer numeroContrato, LocalDate dataContrato, Double valorTotalContrato) {
         this.numeroContrato = numeroContrato;
         this.dataContrato = dataContrato;
         this.valorTotalContrato = valorTotalContrato;
@@ -20,10 +21,10 @@ public class Contrato {
     public void setNumero(Integer numeroContrato) {
         this.numeroContrato = numeroContrato;
     }
-    public LocalDateTime getDataContrato() {
+    public LocalDate getDataContrato() {
         return dataContrato;
     }
-    public void setDataContrato(LocalDateTime dataContrato) {
+    public void setDataContrato(LocalDate dataContrato) {
         this.dataContrato = dataContrato;
     }
     public Double getValorTotalContrato() {

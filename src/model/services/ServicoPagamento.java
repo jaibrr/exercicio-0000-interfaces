@@ -26,7 +26,7 @@ public class ServicoPagamento {
 
         for(int i = 1; i <= numeroParcelas; i++){
             Parcela parcela = new Parcela(contrato.getDataContrato().plusMonths(i), valorTotalJuroTaxa/numeroParcelas);
-            System.out.println(parcela);
+            System.out.println(parcela.toString());
         }
     }
     

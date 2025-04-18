@@ -1,19 +1,18 @@
 package application;
 
-import java.time.LocalDateTime;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
 import model.entities.Contrato;
-import model.entities.Parcela;
 
-import model.services.ServicoPagamentoInterface;
 import model.services.ServicoPagamentoInterfacePaypal;
 import model.services.ServicoPagamento;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ParseException {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
@@ -24,7 +23,7 @@ public class App {
         System.out.print("Numero do Contrato: ");
         Integer numeroContrato = sc.nextInt();
         System.out.print("Data do Contrato(dd/MM/yyy): ");
-        LocalDateTime dataContrato = LocalDateTime.parse(sc.nextLine(), fmt);
+        LocalDate dataContrato = LocalDate.parse(sc.next(), fmt);
         System.out.print("Valor Total do Contrato: $ ");
         double valorTotalContrato = sc.nextDouble();
         System.out.print("Numero de Parcelas: ");
@@ -35,6 +34,6 @@ public class App {
 
         ServicoPagamento servicoPagamento = new ServicoPagamento(numeroParcelas, contrato, new ServicoPagamentoInterfacePaypal()) {};
         servicoPagamento.processarPagamento();
-        
+        sc.close();
     }
 }

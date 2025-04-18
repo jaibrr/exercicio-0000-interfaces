@@ -1,20 +1,23 @@
 package model.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Parcela {
 
-    LocalDateTime dataPagamentoParcela;
+    LocalDate dataPagamentoParcela;
     Double valorParcela;
 
-    public Parcela(LocalDateTime dataPagamentoParcela, Double valorParcela) {
+    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    public Parcela(LocalDate dataPagamentoParcela, Double valorParcela) {
         this.dataPagamentoParcela = dataPagamentoParcela;
         this.valorParcela = valorParcela;
     }
-    public LocalDateTime getDataPagamentoParcela() {
+    public LocalDate getDataPagamentoParcela() {
         return dataPagamentoParcela;
     }
-    public void setDataPagamentoParcela(LocalDateTime dataPagamentoParcela) {
+    public void setDataPagamentoParcela(LocalDate dataPagamentoParcela) {
         this.dataPagamentoParcela = dataPagamentoParcela;
     }
     public Double getValorParcela() {
@@ -23,6 +26,11 @@ public class Parcela {
     public void setValorParcela(Double valorParcela) {
         this.valorParcela = valorParcela;
     }
+    @Override
+    public String toString() {
+        return getDataPagamentoParcela() + " - " + getValorParcela();
+    }
 
+    
     
 }
