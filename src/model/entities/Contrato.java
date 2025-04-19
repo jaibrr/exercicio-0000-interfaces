@@ -1,12 +1,16 @@
 package model.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Contrato {
 
     private Integer numeroContrato;
     private LocalDate dataContrato;
     private Double valorTotalContrato;
+
+    private List<Parcela> parcelas = new ArrayList<>();
 
 
     public Contrato(Integer numeroContrato, LocalDate dataContrato, Double valorTotalContrato) {
@@ -34,5 +38,8 @@ public class Contrato {
         this.valorTotalContrato = valorTotalContrato;
     }    
 
+	public List<Parcela> getParcelas() {
+		return parcelas;
+	}
 
 }

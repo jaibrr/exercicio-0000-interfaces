@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import model.entities.Contrato;
-
+import model.entities.Parcela;
 import model.services.ServicoPagamentoInterfacePaypal;
 import model.services.ServicoPagamento;
 
@@ -32,8 +32,13 @@ public class App {
         Contrato contrato = new Contrato(numeroContrato,dataContrato,valorTotalContrato);
 
 
-        ServicoPagamento servicoPagamento = new ServicoPagamento(numeroParcelas, contrato, new ServicoPagamentoInterfacePaypal()) {};
-        servicoPagamento.processarPagamento();
+        ServicoPagamento servicoPagamento = new ServicoPagamento(new ServicoPagamentoInterfacePaypal()) {};
+        servicoPagamento.processarPagamento(contrato, numeroParcelas);
+
+        System.out.println("Parcelas");
+        for(Parcela parcela : contrato.getParcelas()){
+            System.out.println(parcela);
+        }
         sc.close();
     }
 }

@@ -1,32 +1,32 @@
 package model.services;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 import model.entities.Contrato;
 import model.entities.Parcela;
 
 public class ServicoPagamento {
     
-    private Integer numeroParcelas;
-    private Contrato contrato;
     private ServicoPagamentoInterface servicoPagamentoInterface;
 
 
-    public ServicoPagamento(Integer numeroParcelas, Contrato contrato, ServicoPagamentoInterface servicoPagamentoInterface) {
-        this.numeroParcelas = numeroParcelas;
-        this.contrato = contrato;
+    public ServicoPagamento(ServicoPagamentoInterface servicoPagamentoInterface) {
         this.servicoPagamentoInterface = servicoPagamentoInterface;
     }
 
-    
 
-    public void processarPagamento(){
+    public void processarPagamento(Contrato contrato, int numeroParcelas){
 
-        double juroMensal = servicoPagamentoInterface.juroMensal(contrato.getValorTotalContrato());
-        double taxaPagamento = servicoPagamentoInterface.taxaPagamento(contrato.getValorTotalContrato());
-        double valorTotalJuroTaxa = contrato.getValorTotalContrato() + taxaPagamento + juroMensal;
+        double parcelaBasica = contrato.getValorTotalContrato()/numeroParcelas;
 
         for(int i = 1; i <= numeroParcelas; i++){
-            Parcela parcela = new Parcela(contrato.getDataContrato().plusMonths(i), valorTotalJuroTaxa/numeroParcelas);
-            System.out.println(parcela.toString());
+            LocalDate dataPagamentoParcela = contrato.getDataContrato().plusMonths(i);
+            double juroMensal = servicoPagamentoInterface.juroMensal(parcelaBasica);
+            double taxaPagamento = servicoPagamentoInterface.taxaPagamento(parcelaBasica + juroMensal);
+            double parcelaFinal = parcelaBasica + juroMensal + taxaPagamento;
+            contrato.getParcelas().add(new Parcela(dataPagamentoParcela, parcelaFinal));
         }
     }
     

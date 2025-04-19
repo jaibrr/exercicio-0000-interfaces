@@ -28,7 +28,7 @@ public class Parcela {
     }
     @Override
     public String toString() {
-        return getDataPagamentoParcela() + " - " + getValorParcela();
+        return dataPagamentoParcela.format(fmt) + " - " + String.format("%.2f", valorParcela);
     }
 
     
