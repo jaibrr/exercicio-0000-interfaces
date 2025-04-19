@@ -6,8 +6,8 @@ public class ServicoPagamentoInterfacePaypal implements ServicoPagamentoInterfac
 	private static final double JURO_MENSAL = 0.01;
 
     @Override
-    public double juroMensal(double valor){
-        return valor * JURO_MENSAL;
+    public double juroMensal(double valor, int parcelas){
+        return valor * JURO_MENSAL * parcelas;
     }
 
     @Override

@@ -1,8 +1,6 @@
 package model.services;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 
 import model.entities.Contrato;
 import model.entities.Parcela;
@@ -23,7 +21,7 @@ public class ServicoPagamento {
 
         for(int i = 1; i <= numeroParcelas; i++){
             LocalDate dataPagamentoParcela = contrato.getDataContrato().plusMonths(i);
-            double juroMensal = servicoPagamentoInterface.juroMensal(parcelaBasica);
+            double juroMensal = servicoPagamentoInterface.juroMensal(parcelaBasica, i);
             double taxaPagamento = servicoPagamentoInterface.taxaPagamento(parcelaBasica + juroMensal);
             double parcelaFinal = parcelaBasica + juroMensal + taxaPagamento;
             contrato.getParcelas().add(new Parcela(dataPagamentoParcela, parcelaFinal));
